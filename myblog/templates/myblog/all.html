@@ -1,0 +1,10 @@
+{% extends "myblog/base.html" %}
+{% load static %}
+{% block content %}
+    <main style="display:flex; justify-content:center;">
+        <div class="main-paragraphs">
+        <h1>{{content.heading}}</h1>
+        <p>{{content.blog_contents}}</p>
+    </div>
+    </main>
+{% endblock %}
