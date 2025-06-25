@@ -1,6 +1,6 @@
-'''
-git bash
+```
+bash
 
 python manage.py runserver
 
-'''
+```
