@@ -12,3 +12,5 @@ cd Blog-django
 ```bash
 python manage.py runserver
 ```
+
+# 4. this is for test
