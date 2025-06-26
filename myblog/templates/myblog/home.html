@@ -1,27 +1,38 @@
-{% comment %} {% extends "myblog/base.html" %} {% endcomment %}
-{% include "myblog/header.html" %}
-{% load static %}
+{% include "myblog/header.html" %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+/>
 {% block content %}
-<main style="padding:29px;">
-    <h1 style="font-size:30px; margin-bottom:18px;">Blog Posts: </h1>
+<main style="padding: 29px">
+  <h1 style="font-size: 30px; margin-bottom: 18px">Blog Posts:</h1>
 
-    {% comment %} Right section {% endcomment %}
-    <section>
-{% for blogcontents in content %}
+  {% comment %} Right section {% endcomment %}
+  <section>
+    {% for blogcontents in content %}
     <div class="blog-container">
-        <h1 style="font-size:28px; margin-bottom:16px">{{ blogcontents.heading }}</h1>
-        <div>
-                <img src="{{ blogcontents.image}}" alt="{{ blogcontents.heading }}" style="margin-bottom:16px">
-            <p>{{blogcontents.blog_contents|truncatechars:70 }}</p>
-
-
-        </div>
-        {{blogcontents.id}}
-        <a href="/Preview/{{blogcontents.id}}">Preview</a>
+      <h1 style="font-size: 28px; margin-bottom: 16px">
+        {{ blogcontents.heading }}
+      </h1>
+      <div>
+        <img
+          src="{{ blogcontents.image}}"
+          alt="{{ blogcontents.heading }}"
+          style="margin-bottom: 16px"
+        />
+        <p>{{blogcontents.blog_contents|truncatechars:70}}</p>
+      </div>
+      {{blogcontents.id}}
+      <a href="/Preview/{{blogcontents.id}}">Preview</a><br />
+      <a href="/edit/{{blogcontents.id}}">
+        <i class="ri-pencil-fill" id="pencil"></i>
+      </a>
+      <a href="/delete/{{blogcontents.id}}">
+        <i class="ri-delete-bin-6-fill" id="delete"></i>
+      </a>
     </div>
-{% endfor %}
-
-
-    </section>
+    {% endfor %}
+  </section>
 </main>
 {% endblock %}

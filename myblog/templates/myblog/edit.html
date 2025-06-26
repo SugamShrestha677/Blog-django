@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+<h2>Edit Blog Post</h2>
+
+<div class="form-container">
+    <form method="POST">
+  {% csrf_token %}
+  <label>Heading:</label><br>
+  <input type="text" name="heading" value="{{ post.heading }}"><br><br>
+
+  <label>Content:</label><br>
+  <textarea name="blog_contents" rows="6" cols="40">{{ post.blog_contents }}</textarea><br><br>
+
+  <button type="submit">Update</button>
+</form>
+</div>

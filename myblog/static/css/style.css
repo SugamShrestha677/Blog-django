@@ -29,9 +29,10 @@ nav ul a{
 
 }
 .blog-container{
-    margin: 5px 35px;
-    height: 400px;
-    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    height: 200px;
+    width: 70%;
     border: 1px solid black;
     background-color: white !important;
     padding: 8px 12px;
@@ -41,9 +42,33 @@ nav ul a{
 .blog-container p{
     font-size: 20px;
 }
-section{
-    display: flex;
-}
+
 .main-paragraphs{
     text-align: justify;
+}
+#pencil{
+    font-size: 25px;
+    margin-top: 90px;
+    
+}
+#pencil:hover{
+    cursor: pointer;
+}
+#delete{
+    font-size: 25px;
+    margin-top: 90px;
+    margin-left: 6px;
+    
+}
+#delete:hover{
+    cursor: pointer;
+}
+.main-paragraphs{
+    padding: 10px 25px;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    height: 600px;
+    overflow-y: scroll;
+    border: 1px solid black;
 }

@@ -45,3 +45,21 @@ def signup(request):
         user1.save()
         return redirect("/login")
     return render(request,"myblog/sign.html",{})
+
+def index(request):
+    posts=BlogPosts.objects.all()
+    return render(request,"myblog/index.html",{"post":posts})
+
+def delete(request,id):
+    post = BlogPosts.objects.get(id=id)
+    post.delete()
+    return redirect('/home')
+def edit(request,id):
+    post = BlogPosts.objects.get(id=id)
+    if request.method == "POST":
+        post.heading = request.POST['heading']
+        post.blog_contents = request.POST['blog_contents']
+        post.save()
+        return redirect('/home')
+
+    return render(request, 'myblog/edit.html', {'post': post})
