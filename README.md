@@ -13,4 +13,6 @@ cd Blog-django
 python manage.py runserver
 ```
 
-# 4. this is for test
+# 4. this is for test done in class
+
+# 5. this test was done from home
