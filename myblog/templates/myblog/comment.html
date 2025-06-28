@@ -1,0 +1,22 @@
+{% include "myblog/header1.html" %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+/>
+{% block content %}
+<main style="padding: 29px">
+  <form method="POST">
+    {% csrf_token %}
+    <label for="comment">Write your comment: </label>
+    <input type="text" id="comment" name="comment">
+    <button type="submit">Submit</button>
+  </form>
+  <h3>All Comments:</h3>
+  {% for comment in comments %}
+    <p>{{ comment.text }}</p>
+  {% empty %}
+    <p>No comments yet.</p>
+  {% endfor %}
+</main>
+{% endblock %}

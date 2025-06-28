@@ -121,7 +121,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static'] 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = [BASE_DIR / 'media']
 
 
 
@@ -129,3 +129,16 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS={
+     "site_title": "Blogs",
+     "copyright": "We 6 ",
+     "topmenu_links": [
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "myblog"},
+    ],
+        "show_ui_builder": False,
+}
+
+JAZZMIN_SETTINGS["show_ui_builder"] = True

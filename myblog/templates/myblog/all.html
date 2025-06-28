@@ -1,4 +1,4 @@
-{% extends "myblog/base.html" %}
+{% include "myblog/header1.html" %}
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -7,5 +7,9 @@
         <h1>{{content.heading}}</h1>
         <p style="margin-top:8px">{{content.blog_contents|linebreaksbr}}</p>
         </div>
+        <a href="/comment/{{ content.id }}">Click to comment</a>
+
+        {% comment %} <a href="{% url 'comment' blogcontents.id %}">Click to comment.</a> {% endcomment %}
+
     </main>
 {% endblock %}

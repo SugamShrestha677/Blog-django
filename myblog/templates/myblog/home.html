@@ -1,5 +1,6 @@
 {% include "myblog/header.html" %} {% load static %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
@@ -7,11 +8,19 @@
 {% block content %}
 <main style="padding: 29px">
   <h1 style="font-size: 30px; margin-bottom: 18px">Blog Posts:</h1>
+  {% comment %} <div class="form-container" style="height:100px">
+    <input type="text" id="search" name="search" class="search">
+  </div> {% endcomment %}
 
+  <form method="get" class="form-container" style="height:100px">
+    <input type="text" id="search" name="search" class="search" placeholder="Search blog..." value="{{request.GET.search}}">
+    <button type="submit">Search</button>
+  </form>
   {% comment %} Right section {% endcomment %}
   <section>
     {% for blogcontents in content %}
     <div class="blog-container">
+        <img class="image" src="{{BlogPosts.image.url}}" alt="" srcset=""/>
       <h1 style="font-size: 28px; margin-bottom: 16px">
         {{ blogcontents.heading }}
       </h1>

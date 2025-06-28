@@ -2,9 +2,13 @@ from django.shortcuts import render,redirect
 from .models import *
 # Create your views here.
 def home_page(request):
-    for data in BlogPosts.objects.all():
-        print(data.blog_contents)
-    contents=BlogPosts.objects.all()
+    search_query = request.GET.get('search')
+    if search_query:
+        contents=BlogPosts.objects.filter(heading__icontains=search_query) | BlogPosts.objects.filter(
+            blog_contents__icontains=search_query
+        )
+    else:
+        contents=BlogPosts.objects.all()
         
     return render(request,"myblog/home.html",{"content":contents})
 
@@ -63,3 +67,26 @@ def edit(request,id):
         return redirect('/home')
 
     return render(request, 'myblog/edit.html', {'post': post})
+
+def comment(request, post_id):
+    post = BlogPosts.objects.get(id=post_id)
+
+    # if request.method == "POST":
+    #     comment_text = request.POST.get("comment")
+    #     if request.user.is_authenticated:  # Check if user is logged in
+    #         Comment.objects.create(blog=post, user=request.user, text=comment_text)
+    #     else:
+    #         return redirect('/login/')  # Redirect if not logged in
+
+    # comments = Comment.objects.filter(blog=post)
+
+    # return render(request, "myblog/comment.html", {"post": post, "comments": comments})
+    if request.method == "POST":
+        comment_text = request.POST.get("comment")
+        Comment.objects.create(blog=post, text=comment_text)
+
+    comments = Comment.objects.filter(blog=post)
+    for comment in comments:
+        print(f"blog is {comment.blog}")
+
+    return render(request, "myblog/comment.html", {"post": post, "comments": comments})
